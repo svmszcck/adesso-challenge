@@ -37,11 +37,3 @@ run **"yarn test"**
 - More test coverage could be better for unit tests. Besides that E2E tests would be really nice. E2E tests are very useful to test the real user behaviour.
 
 **Some Screenshots:**
-
-<img src="https://i.ibb.co/G01vqny/Screenshot-20241028-233345-Expo-Go.png" width="300" >
-
-<img src="https://i.ibb.co/52m3gvf/Screenshot-20241028-233442-Expo-Go.png" width="300" >
-
-<img src="https://i.ibb.co/hCLfCyf/Screenshot-20241028-233434-Expo-Go.png" width="300" >
-
-<img src="https://i.ibb.co/r5CzF4H/Screenshot-20241028-233401-Expo-Go.png" width="300" >
