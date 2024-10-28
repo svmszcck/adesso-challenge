@@ -8,7 +8,6 @@ import {
 } from "@/utils/ui";
 import { AlertMessages } from "@/constants";
 
-// Mocking the entire react-native module
 jest.mock("react-native", () => ({
   Alert: {
     alert: jest.fn(),

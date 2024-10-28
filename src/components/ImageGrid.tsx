@@ -13,8 +13,8 @@ import { screenWidth } from "@/utils/ui";
 import { ThemedText } from "@/components";
 import type { MovieGridItem } from "@/services/types";
 import { Spacing } from "@/constants";
-import CustomImage from "./Image";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import CustomImage from "./Image";
 
 type ImageGridProps = {
   data: MovieGridItem[];
