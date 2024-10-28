@@ -38,10 +38,10 @@ run **"yarn test"**
 
 **Some Screenshots:**
 
-<img src="https://i.ibb.co/G01vqny/Screenshot-20241028-233345-Expo-Go.png" width="300" >
+<img src="https://i.ibb.co/zQjkgCL/Screenshot-20241028-233345-Expo-Go.png" width="300" >
 
 <img src="https://i.ibb.co/52m3gvf/Screenshot-20241028-233442-Expo-Go.png" width="300" >
 
-<img src="https://i.ibb.co/hCLfCyf/Screenshot-20241028-233434-Expo-Go.png" width="300" >
+<img src="https://i.ibb.co/1Rvhxsh/Screenshot-20241028-233434-Expo-Go.png" width="300" >
 
 <img src="https://i.ibb.co/r5CzF4H/Screenshot-20241028-233401-Expo-Go.png" width="300" >
