@@ -31,3 +31,17 @@ run **"yarn test"**
 - A logging service can be used. That way logging logic will be centralized and it will be easier to track the errors inside the application.
 
 - I have added theming & dark mode support. If you change the phone's theme you will see the change on the app automatically.
+
+- UI could be improved if I had more time.
+
+- More test coverage could be better for unit tests. Besides that E2E tests would be really nice. E2E tests are very useful to test the real user behaviour.
+
+**Some Screenshots:**
+
+<img src="https://i.ibb.co/G01vqny/Screenshot-20241028-233345-Expo-Go.png" width="300" >
+
+<img src="https://i.ibb.co/52m3gvf/Screenshot-20241028-233442-Expo-Go.png" width="300" >
+
+<img src="https://i.ibb.co/hCLfCyf/Screenshot-20241028-233434-Expo-Go.png" width="300" >
+
+<img src="https://i.ibb.co/r5CzF4H/Screenshot-20241028-233401-Expo-Go.png" width="300" >
