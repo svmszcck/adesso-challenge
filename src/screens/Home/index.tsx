@@ -20,7 +20,6 @@ const Home = () => {
     isFetching,
     isSuccess,
     isError,
-    error,
     refetch,
     hasNextPage,
     fetchNextPage,

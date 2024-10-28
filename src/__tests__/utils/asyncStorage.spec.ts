@@ -124,10 +124,6 @@ describe("AsyncStorage Utility Functions", () => {
       JSON.stringify([item2])
     );
 
-    const result = await loadData(key);
-
-    console.log("xxx: ", result);
-
     await removeItem(key, item.imdbID);
 
     expect(AsyncStorage.setItem).not.toHaveBeenCalled();

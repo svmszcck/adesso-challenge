@@ -3,7 +3,8 @@ import { router } from "expo-router";
 
 import useStore from "@/store";
 import useFiter from "@/hooks/useFilter";
-import { Routes } from "@/constants";
+import { AlertMessages, Routes } from "@/constants";
+import { showErrorAlert } from "@/utils/ui";
 import SearchView from "./view";
 
 const Search = () => {
@@ -17,7 +18,10 @@ const Search = () => {
   } = useFiter();
 
   const handleSearch = (): void => {
-    if (!value && !localType && !localYear) return;
+    if (!value && !localType && !localYear) {
+      showErrorAlert(AlertMessages.SEARCH_INVALID_MESSAGE);
+      return;
+    }
     if (value) setSearchValue(value);
     if (localType) setType(localType);
     if (localYear) setYear(localYear);

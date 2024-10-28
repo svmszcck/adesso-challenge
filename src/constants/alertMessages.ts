@@ -9,6 +9,7 @@ enum AlertMessages {
   FAV_LIST_EMPTY_MESSAGE = "Favori listeniz boş.",
   FAV_ADDED_MESSAGE = "Film favorilere eklendi.",
   FAV_REMOVED_MESSAGE = "Film favorilerden kaldırıldı.",
+  SEARCH_INVALID_MESSAGE = "Lütfen bir arama terimi girin.",
 }
 
 export default AlertMessages;
