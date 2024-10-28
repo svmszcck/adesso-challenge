@@ -18,7 +18,7 @@ run **"yarn test"**
 
 **Some Notes:**
 
-- API is very limited and it doesn't provide an endpoint to fetch all the movies(there are only 2 endpoints: for searching and for fetching a specific movie). That's why I am using "avengers" as the search value when app starts to fetch the movies.
+- API is very limited and it doesn't provide an endpoint to fetch all the movies(there are only 2 endpoints: for searching and for fetching a specific movie). That's why I am using "love" as the default search value when app starts to fetch the movies. It can be updated in the store("/src/store/index.ts") file.
 
 - There should be more abstraction in the codebase. As this is a small project it is acceptable to use domain specific classes & objects but in a production-level application there should be more abstraction and separation of concerns(SOLID principles).
 
@@ -35,6 +35,8 @@ run **"yarn test"**
 - UI could be improved if I had more time.
 
 - More test coverage could be better for unit tests. Besides that E2E tests would be really nice. E2E tests are very useful to test the real user behaviour.
+
+- There is a bug regarding settings the initial route with expo router's file based routing system. That's why I have used a workaround, more details here: https://github.com/expo/router/issues/723
 
 **Some Screenshots:**
 

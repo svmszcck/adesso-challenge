@@ -1,6 +1,8 @@
 import { MovieType } from "@/services/types";
 import { create } from "zustand";
 
+const DEFAULT_SEARCH_VALUE = "love";
+
 type Store = {
   type: MovieType | undefined;
   year: string | undefined;
@@ -14,7 +16,7 @@ type Store = {
 const useStore = create<Store>((set) => ({
   type: undefined,
   year: undefined,
-  searchValue: "avengers",
+  searchValue: DEFAULT_SEARCH_VALUE,
   setType: (type) => set({ type }),
   setYear: (year) => set({ year }),
   setSearchValue: (searchValue) => set({ searchValue }),
