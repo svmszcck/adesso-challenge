@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { CommonColors, Spacing } from "@/constants";
+import { CommonColors, FontSize, Spacing } from "@/constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -9,15 +9,17 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingBottom: 70,
   },
+  backIcon: {
+    position: "absolute",
+    top: Spacing.LARGE,
+    left: Spacing.LARGE,
+  },
   details: {
-    padding: Spacing.LARGE,
+    paddingHorizontal: Spacing.LARGE,
+    paddingVertical: Spacing.SMALL,
   },
   loadingSpinner: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    ...StyleSheet.absoluteFillObject,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: Spacing.SMALL,
     marginBottom: Spacing.SMALL,
+    marginTop: 5,
   },
   subTitle: {
     flexDirection: "row",
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   subTitleText: {
-    fontSize: 15,
+    fontSize: FontSize.XSMALL,
   },
   genres: {
     flexDirection: "row",

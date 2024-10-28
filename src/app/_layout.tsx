@@ -13,17 +13,22 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { CommonColors } from "@/constants";
+import useNetworkStatus from "@/hooks/useNetworkStatus";
 
 import "react-native-reanimated";
 
 SplashScreen.preventAutoHideAsync();
-NavigationBar.setBackgroundColorAsync(CommonColors.WHITE);
+
+// Make navigation bar transparent
+NavigationBar.setPositionAsync("absolute");
+NavigationBar.setBackgroundColorAsync("#ffffff01");
+NavigationBar.setButtonStyleAsync("dark");
 
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  useNetworkStatus();
   const textPaleColor = useThemeColor({}, "background");
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),

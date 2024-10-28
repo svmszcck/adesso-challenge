@@ -6,6 +6,7 @@ import { calculateNextPageParam } from "@/utils/data";
 import type { MovieSummary } from "@/services/types";
 import useStore from "@/store";
 import HomeView from "./view";
+import { isAxiosError } from "axios";
 
 const Home = () => {
   const [refreshing, setsetRefreshing] = useState(false);
@@ -18,6 +19,7 @@ const Home = () => {
     isFetched,
     isFetching,
     isSuccess,
+    isError,
     error,
     refetch,
     hasNextPage,
@@ -45,8 +47,7 @@ const Home = () => {
     return data.pages.flat().filter((item) => item !== undefined);
   }, [data?.pages]);
 
-  const noData =
-    error !== null || (isFetched && isSuccess && movies.length === 0);
+  const noData = isError || (isFetched && isSuccess && movies.length === 0);
 
   return (
     <HomeView

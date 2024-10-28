@@ -27,8 +27,8 @@ const Favorites = () => {
 
   const deleteFavorites = () => {
     showAlert(
-      "Favorileri Sil?",
-      "Eğer onaylarsanız tüm favori listesi sıfırlanacak!",
+      AlertMessages.CLEAR_FAVS_TITLE,
+      AlertMessages.CLEAR_FAVS_MESSAGE,
       () => {
         clearData("movies");
         getFavorites();
@@ -37,8 +37,9 @@ const Favorites = () => {
   };
 
   const deleteWarning = () => {
-    showAlert(AlertMessages.ERROR, "Favori listeniz boş.");
+    showAlert(AlertMessages.ERROR, AlertMessages.FAV_LIST_EMPTY_MESSAGE);
   };
+
   return (
     <FavoritesView
       {...{

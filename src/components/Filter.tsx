@@ -3,7 +3,7 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { movieTypes } from "@/constants";
+import { movieTypes, FontSize, Spacing } from "@/constants";
 import ListModal from "@/utils/modals/ListModal";
 import { Button, ThemedText } from "@/components";
 import { MovieType } from "@/services/types";
@@ -46,11 +46,7 @@ const Filter: React.FC<FilterProps> = ({
         activeOpacity={0.5}
         onPress={() => setTypeModal(true)}
       >
-        <ThemedText
-          type="default"
-          style={{ marginRight: 5, lineHeight: 20 }}
-          isPale
-        >
+        <ThemedText type="default" style={styles.optionText} isPale>
           Tür
         </ThemedText>
         <Ionicons name="chevron-down" size={20} color={textPaleColor} />
@@ -61,17 +57,15 @@ const Filter: React.FC<FilterProps> = ({
         activeOpacity={0.5}
         onPress={() => setYearModal(true)}
       >
-        <ThemedText
-          type="default"
-          style={{ marginRight: 5, lineHeight: 20 }}
-          isPale
-        >
+        <ThemedText type="default" style={styles.optionText} isPale>
           Yayınlanma Yılı
         </ThemedText>
         <Ionicons name="chevron-down" size={20} color={textPaleColor} />
       </TouchableOpacity>
 
-      {onClear && <Button title="Sıfırla" onPress={onClear} isSmall />}
+      {onClear && (type || year) && (
+        <Button title="Sıfırla" onPress={onClear} isSmall />
+      )}
 
       <ListModal
         visible={typeModal}
@@ -96,14 +90,19 @@ const Filter: React.FC<FilterProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    marginBottom: Spacing.SMALL,
   },
   option: {
     flexDirection: "row",
     alignItems: "center",
-    marginRight: 15,
+    marginRight: Spacing.MEDIUM,
+  },
+  optionText: {
+    marginRight: 5,
+    lineHeight: 20,
   },
   contentTitle: {
-    fontSize: 20,
+    fontSize: FontSize.LARGE,
     textAlign: "center",
   },
   modalTitle: {
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
   separator: {
     width: "100%",
     height: 1,
-    marginVertical: 20,
+    marginVertical: Spacing.LARGE,
   },
 });
 

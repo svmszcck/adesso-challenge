@@ -9,7 +9,7 @@ jest.mock("@/hooks/useThemeColor", () => ({
   ),
 }));
 
-describe("CustomButton", () => {
+describe("Custom Button Component", () => {
   const mockOnPress = jest.fn();
 
   afterEach(() => {

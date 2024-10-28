@@ -2,7 +2,13 @@ import React from "react";
 import { View, Image } from "react-native";
 import { router } from "expo-router";
 
-import { ScreenContainer, Filter, ImageGrid, ThemedText } from "@/components";
+import {
+  Button,
+  ScreenContainer,
+  Filter,
+  ImageGrid,
+  ThemedText,
+} from "@/components";
 import { Routes, ErrorMessages } from "@/constants";
 import NoResult from "@/assets/images/no-result.png";
 import styles from "./styles";
@@ -26,7 +32,14 @@ const HomeView: React.FC<HomeViewProps> = (props) => {
       {props.noData ? (
         <View style={styles.noData}>
           <Image source={NoResult} style={styles.image} />
-          <ThemedText>{ErrorMessages.NO_MOVIE_LIST_DATA}</ThemedText>
+          <ThemedText type="default" style={styles.errorText}>
+            {ErrorMessages.NO_MOVIE_LIST_DATA}
+          </ThemedText>
+          <Button
+            title="TEKRAR DENE"
+            accessibilityLabel="Tekrar dene"
+            onPress={props.resetData}
+          />
         </View>
       ) : (
         <ImageGrid

@@ -1,6 +1,7 @@
 export const isValidText = (text: unknown): boolean => {
   return (
     typeof text === "string" &&
+    text !== "" &&
     text !== "N/A" &&
     text !== undefined &&
     text !== null
@@ -15,8 +16,8 @@ export const isEmpty = (data: unknown[]): boolean => {
   return data.length === 0;
 };
 
-export const isValidUrl = (value?: string): boolean | undefined => {
-  if (!value) return;
+export const checkURL = (value: string): boolean => {
+  if (!value) return false;
 
   let url;
 

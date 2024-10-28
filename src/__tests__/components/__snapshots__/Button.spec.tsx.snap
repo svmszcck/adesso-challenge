@@ -2,6 +2,8 @@
 
 exports[`CustomButton matches snapshot 1`] = `
 <View
+  accessibilityLabel="Click Me"
+  accessibilityRole="button"
   accessibilityState={
     {
       "busy": undefined,

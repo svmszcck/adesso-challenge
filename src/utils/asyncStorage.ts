@@ -72,7 +72,15 @@ export const addItem = async (
 export const removeItem = async (key: string, id: string): Promise<void> => {
   try {
     const currentData = await loadData(key);
+
     if (Array.isArray(currentData)) {
+      const itemExists = currentData.some((item) => item.imdbID === id);
+
+      if (!itemExists) {
+        console.log("Item doesn't exist");
+        return;
+      }
+
       const updatedData = currentData.filter((item) => item.imdbID !== id);
 
       await saveData(key, updatedData);

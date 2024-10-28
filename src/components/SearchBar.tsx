@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { CommonColors } from "@/constants";
+import { CommonColors, FontSize } from "@/constants";
 
 type SearchProps = {
   placeholder?: string;
@@ -19,18 +19,25 @@ const SearchBar: React.FC<SearchProps> = ({
   defaultValue,
 }) => {
   return (
-    <View style={styles.container}>
-      <Ionicons name="search" size={20} color="black" style={styles.icon} />
+    <View style={styles.container} accessible={true} accessibilityRole="search">
+      <Ionicons
+        name="search"
+        size={20}
+        color={CommonColors.BLACK}
+        style={styles.icon}
+        accessibilityLabel="Search icon"
+      />
       <TextInput
         style={styles.input}
         placeholder={placeholder}
         value={value}
         onChangeText={(text) => setValue(text)}
-        placeholderTextColor="#aaa"
+        placeholderTextColor={CommonColors.GRAY_DARK}
         onSubmitEditing={onSubmit}
         selectionColor={CommonColors.BLACK}
-        clearButtonMode="always"
         defaultValue={defaultValue}
+        accessibilityLabel="Arama metni girişi"
+        accessibilityHint="Arama metnini buraya girin"
       />
     </View>
   );
@@ -40,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: CommonColors.GRAY_LIGHT,
     borderRadius: 25,
     paddingHorizontal: 10,
     height: 40,
@@ -50,8 +57,8 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 16,
-    color: "black",
+    fontSize: FontSize.XSMALL,
+    color: CommonColors.BLACK,
   },
 });
 

@@ -78,3 +78,9 @@ export const normalizeFilterText = (
 
   return result;
 };
+
+export const normalizeGenres = (genres?: string): string[] | undefined => {
+  if (!genres) return;
+
+  return genres.split(",");
+};

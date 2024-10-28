@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import ThemedText from "@/components/ThemedText";
 import Spacing from "@/constants/spacing";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 type HeaderProps = {
   title: string;
@@ -12,16 +13,24 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ title, icon, action }) => {
+  const color = useThemeColor({}, "text");
+
   return (
-    <View style={styles.header}>
+    <View style={styles.header} accessibilityRole="header" accessible>
       {title && (
         <ThemedText type="title" style={styles.title}>
           {title}
         </ThemedText>
       )}
       {icon && (
-        <TouchableOpacity activeOpacity={0.5} onPress={action}>
-          <Ionicons name={icon} size={26} />
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={action}
+          accessibilityLabel={`${title} eylem butonu`}
+          accessibilityHint="Eylemi gerçekleştirmek için basın"
+          accessibilityRole="button"
+        >
+          <Ionicons name={icon} size={26} color={color} />
         </TouchableOpacity>
       )}
     </View>

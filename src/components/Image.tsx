@@ -2,7 +2,7 @@ import React, { useState, memo } from "react";
 import { View, Image, StyleSheet, StyleProp, ImageStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { isValidUrl } from "@/utils/validation";
+import { checkURL } from "@/utils/validation";
 import Placeholder from "@/assets/images/placeholder.jpg";
 
 type CustomImageProps = {
@@ -17,6 +17,7 @@ const CustomImage: React.FC<CustomImageProps> = ({
   withGradient,
 }) => {
   const [loading, setLoading] = useState(true);
+  const isValidURL = src ? checkURL(src) : false;
 
   return (
     <View>
@@ -26,21 +27,26 @@ const CustomImage: React.FC<CustomImageProps> = ({
           style={[styles.placeholder, style]}
           resizeMode="cover"
           testID="placeholder-image"
+          accessibilityLabel="Varsayılan resim"
+          accessible
         />
       )}
       <Image
-        source={isValidUrl(src) ? { uri: src } : Placeholder}
+        source={isValidURL ? { uri: src } : Placeholder}
         style={style}
         onLoadStart={() => setLoading(true)}
         onLoadEnd={() => setLoading(false)}
         defaultSource={Placeholder}
         resizeMode="cover"
         testID="custom-image"
+        accessibilityLabel={isValidURL ? "Yüklenen resim" : "Varsayılan resim"}
+        accessible
       />
-      {withGradient && !loading && isValidUrl(src) && (
+      {withGradient && isValidURL && (
         <LinearGradient
-          colors={["rgba(0, 0, 0, 0.4)", "rgba(0, 0, 0, 0.8)"]}
+          colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.8)"]}
           style={styles.overlay}
+          testID="gradient"
         />
       )}
     </View>

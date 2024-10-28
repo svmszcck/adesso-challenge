@@ -3,6 +3,8 @@
 exports[`Image matches snapshot 1`] = `
 <View>
   <Image
+    accessibilityLabel="Varsayılan resim"
+    accessible={true}
     resizeMode="cover"
     source={1}
     style={
@@ -20,6 +22,8 @@ exports[`Image matches snapshot 1`] = `
     testID="placeholder-image"
   />
   <Image
+    accessibilityLabel="Yüklenen resim"
+    accessible={true}
     defaultSource={1}
     onLoadEnd={[Function]}
     onLoadStart={[Function]}

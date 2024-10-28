@@ -6,7 +6,6 @@ export type DetailsViewProps = {
   isModalVisible: boolean;
   setModalVisible: (value: boolean) => void;
   imageURL: string | undefined;
-  textColor: string;
   favorite: boolean;
   toggleFavorite: () => void;
 };

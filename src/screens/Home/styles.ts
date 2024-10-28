@@ -1,3 +1,4 @@
+import { Spacing } from "@/constants";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
@@ -9,6 +10,9 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     aspectRatio: 1,
+  },
+  errorText: {
+    marginBottom: Spacing.LARGE,
   },
 });
 

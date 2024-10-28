@@ -4,3 +4,4 @@ export { default as Routes } from "./routes";
 export { movieTypes } from "./api";
 export { CommonColors, Colors } from "./colors";
 export { default as Spacing } from "./spacing";
+export { default as FontSize } from "./fontSize";

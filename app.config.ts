@@ -36,6 +36,9 @@ export default {
     extra: {
       apiHost: process.env.EXPO_PUBLIC_API_HOST,
       apiKey: process.env.EXPO_PUBLIC_API_KEY,
+      eas: {
+        projectId: "8e1d232d-3985-4d7e-a7bc-235fa2342b93",
+      },
     },
   },
 };

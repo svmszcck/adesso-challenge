@@ -21,14 +21,22 @@ const CustomModal: React.FC<PropsWithChildren<CustomModalProps>> = ({
   fullScreen,
 }) => {
   const textPaleColor = useThemeColor({}, "textPale");
+  const backgroundColor = useThemeColor({}, "background");
 
   const renderCloseButton = () => {
     return (
-      <TouchableOpacity style={styles.close} onPress={onClose} hitSlop={5}>
+      <TouchableOpacity
+        style={styles.close}
+        onPress={onClose}
+        hitSlop={5}
+        accessibilityLabel="Diyalog ekranını kapat"
+        accessibilityHint="Diyalog ekranını kapatır ve önceki ekrana yönlendirir"
+        accessibilityRole="button"
+      >
         <Ionicons
           name="close"
           size={32}
-          color={fullScreen ? "white" : textPaleColor}
+          color={fullScreen ? CommonColors.WHITE : textPaleColor}
         />
       </TouchableOpacity>
     );
@@ -44,16 +52,30 @@ const CustomModal: React.FC<PropsWithChildren<CustomModalProps>> = ({
         {
           height: fullScreen ? "100%" : "auto",
           justifyContent: fullScreen ? "center" : "flex-end",
-          position: "relative",
         },
         style,
       ]}
       backdropOpacity={fullScreen ? 1 : 0.5}
       useNativeDriver
+      accessibilityViewIsModal
+      accessibilityLabel="Diyalog Ekranı"
     >
       {fullScreen && renderCloseButton()}
-      <View style={{ height: fullScreen ? "100%" : null }}>
-        <View style={fullScreen ? null : styles.content}>{children}</View>
+      <View style={{ height: fullScreen ? "100%" : null }} accessible>
+        <View
+          style={
+            !fullScreen && [
+              styles.content,
+              {
+                backgroundColor,
+              },
+            ]
+          }
+          accessible
+          accessibilityHint="Diyalog Ekranı İçeriği"
+        >
+          {children}
+        </View>
         {!fullScreen && renderCloseButton()}
       </View>
     </Modal>
@@ -63,6 +85,7 @@ const CustomModal: React.FC<PropsWithChildren<CustomModalProps>> = ({
 const styles = StyleSheet.create({
   view: {
     margin: 0,
+    position: "relative",
   },
   content: {
     position: "relative",

@@ -3,6 +3,7 @@ import { TouchableOpacity, Text, StyleSheet, ViewStyle } from "react-native";
 
 import { ThemedText } from "@/components";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { FontSize } from "@/constants";
 
 type ButtonProps = {
   title: string;
@@ -30,7 +31,9 @@ const CustomButton: React.FC<ButtonProps> = ({
         { backgroundColor: textColor, paddingVertical: isSmall ? 6 : 10 },
         style,
       ]}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={accessibilityLabel || title}
+      accessibilityRole="button"
+      accessible
       activeOpacity={0.8}
     >
       <ThemedText style={[styles.buttonText, { color: backgroundColor }]}>
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: FontSize.SMALL,
     fontWeight: "bold",
     alignSelf: "center",
   },

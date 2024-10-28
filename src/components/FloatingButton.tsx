@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { CommonColors } from "@/constants";
 
 type FloatingButtonProps = {
   icon: keyof typeof Ionicons.glyphMap;
@@ -29,7 +30,6 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({
 const styles = StyleSheet.create({
   buttonContainer: {
     borderWidth: 1,
-    borderColor: "rgba(0,0,0,0.2)",
     alignItems: "center",
     justifyContent: "center",
     width: 60,

@@ -1,7 +1,8 @@
-import axios, { AxiosResponse } from "axios";
+import { showErrorAlert } from "@/utils/ui";
+import { ErrorMessages } from "@/constants";
 
 import { getData } from "./apiClient";
-import { SearchAPIResult, MovieAPIResult, Movie, MovieType } from "./types";
+import { SearchAPIResult, MovieAPIResult, MovieType } from "./types";
 
 export const fetchMovies = async (
   searchValue: string,
@@ -23,11 +24,13 @@ export const fetchMovies = async (
     });
 
     if (!response || !response.data) {
-      throw new Error("There isn't any result");
+      console.error("There isn't any result");
+      return;
     }
 
     return response.data.Search;
   } catch (error) {
+    showErrorAlert(ErrorMessages.GENERAL_ERROR);
     console.error(error);
   }
 };
@@ -46,11 +49,13 @@ export const fetchMovie = async (
     });
 
     if (!response || !response.data) {
-      throw new Error("There isn't any result");
+      console.error("There isn't any result");
+      return;
     }
 
     return response.data;
   } catch (error) {
+    showErrorAlert(ErrorMessages.GENERAL_ERROR);
     console.error(error);
   }
 };

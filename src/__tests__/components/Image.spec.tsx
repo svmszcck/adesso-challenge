@@ -2,39 +2,34 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react-native";
 
 import Image from "@/components/Image";
-import { isValidUrl } from "@/utils/validation";
+import { checkURL } from "@/utils/validation";
 
 jest.mock("@/utils/validation", () => ({
-  isValidUrl: jest.fn(),
+  checkURL: jest.fn(),
 }));
 
-describe("Image", () => {
+describe("Image Component", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it("renders placeholder when loading", () => {
-    render(<Image />);
-
-    expect(screen.getByTestId("placeholder-image")).toBeTruthy();
-  });
-
-  it("renders image when src is valid", () => {
-    (isValidUrl as jest.Mock).mockReturnValue(true);
+  it("renders placeholder & real image when src is valid", () => {
+    (checkURL as jest.Mock).mockReturnValue(true);
     render(<Image src="http://valid.url/image.jpg" />);
 
+    expect(screen.getByTestId("placeholder-image")).toBeTruthy();
     expect(screen.getByTestId("custom-image")).toBeTruthy();
   });
 
   it("renders placeholder when src is invalid", () => {
-    (isValidUrl as jest.Mock).mockReturnValue(false);
+    (checkURL as jest.Mock).mockReturnValue(false);
     render(<Image src="invalid-url" />);
 
     expect(screen.getByTestId("placeholder-image")).toBeTruthy();
   });
 
   it("renders gradient when withGradient is true and image is loaded", () => {
-    (isValidUrl as jest.Mock).mockReturnValue(true);
+    (checkURL as jest.Mock).mockReturnValue(true);
     render(<Image src="http://valid.url/image.jpg" withGradient />);
 
     // Simulate the onLoadEnd event to indicate that the image has loaded
@@ -44,7 +39,7 @@ describe("Image", () => {
   });
 
   it("matches snapshot", () => {
-    (isValidUrl as jest.Mock).mockReturnValue(true);
+    (checkURL as jest.Mock).mockReturnValue(true);
     const { toJSON } = render(<Image src="http://valid.url/image.jpg" />);
     expect(toJSON()).toMatchSnapshot();
   });

@@ -9,6 +9,7 @@ import {
 
 import { Modal, ThemedText } from "@/components";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { CommonColors, FontSize } from "@/constants";
 
 export type ListItem = {
   title: string;
@@ -33,6 +34,7 @@ const ListModal: React.FC<ListModalProps> = ({
   selected,
 }) => {
   const separatorColor = useThemeColor({}, "separator");
+  const activityIndicatorColor = useThemeColor({}, "activityIndicator");
 
   const renderItem: ListRenderItem<ListItem> = ({ item }) => (
     <TouchableOpacity
@@ -43,7 +45,12 @@ const ListModal: React.FC<ListModalProps> = ({
       <ThemedText
         style={[
           styles.contentTitle,
-          { color: selected === item.value ? "red" : "black" },
+          {
+            color:
+              selected === item.value
+                ? CommonColors.RED
+                : activityIndicatorColor,
+          },
         ]}
       >
         {item.title}
@@ -54,7 +61,10 @@ const ListModal: React.FC<ListModalProps> = ({
   return (
     <Modal visible={visible} onClose={onClose}>
       {title && (
-        <ThemedText type="subtitle" style={styles.modalTitle}>
+        <ThemedText
+          type="subtitle"
+          style={[styles.modalTitle, { color: activityIndicatorColor }]}
+        >
           {title}
         </ThemedText>
       )}
@@ -86,7 +96,7 @@ const styles = StyleSheet.create({
     maxHeight: 400,
   },
   contentTitle: {
-    fontSize: 20,
+    fontSize: FontSize.LARGE,
     textAlign: "center",
   },
   separator: {

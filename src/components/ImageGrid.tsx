@@ -14,6 +14,7 @@ import { ThemedText } from "@/components";
 import type { MovieGridItem } from "@/services/types";
 import { Spacing } from "@/constants";
 import CustomImage from "./Image";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 type ImageGridProps = {
   data: MovieGridItem[];
@@ -34,6 +35,8 @@ const ImageGrid: React.FC<ImageGridProps> = ({
   refreshing,
   paginated = false,
 }) => {
+  const activityIndicatorColor = useThemeColor({}, "activityIndicator");
+
   const renderItem: ListRenderItem<MovieGridItem> = ({ item }) => (
     <Link
       href={{
@@ -62,7 +65,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({
       showsVerticalScrollIndicator={false}
       ListFooterComponent={
         paginated && isFetching && !refreshing ? (
-          <ActivityIndicator color="black" size={30} />
+          <ActivityIndicator color={activityIndicatorColor} size={30} />
         ) : null
       }
       ListFooterComponentStyle={styles.gridFooter}
@@ -82,17 +85,16 @@ const ImageGrid: React.FC<ImageGridProps> = ({
 
 const styles = StyleSheet.create({
   gridContainer: {
-    marginTop: 10,
-    paddingTop: 10,
+    paddingTop: Spacing.SMALL,
   },
   gridContent: {
     justifyContent: "center",
-    margin: -10,
+    margin: -Spacing.SMALL,
     paddingBottom: 60,
   },
   gridFooter: {
-    marginTop: 10,
-    paddingBottom: 20,
+    marginTop: Spacing.SMALL,
+    paddingBottom: Spacing.LARGE,
   },
   imageContainer: {
     flex: 1,

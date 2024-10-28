@@ -5,6 +5,7 @@ import { ErrorMessages } from "@/constants";
 import NoResult from "@/assets/images/no-result.png";
 import styles from "./styles";
 import type { FavoritesViewProps } from "./types";
+import { isEmpty } from "@/utils/validation";
 
 const FavoritesView: React.FC<FavoritesViewProps> = ({
   favorites,
@@ -19,7 +20,7 @@ const FavoritesView: React.FC<FavoritesViewProps> = ({
       icon="trash-outline"
       action={favorites ? deleteFavorites : deleteWarning}
     >
-      {favorites ? (
+      {favorites && !isEmpty(favorites) ? (
         <ImageGrid
           data={favorites}
           refetch={getFavorites}

@@ -29,7 +29,10 @@ const ScreenContainer = ({
   );
 
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor }, style]}>
+    <SafeAreaView
+      style={[styles.safeArea, { backgroundColor }, style]}
+      edges={["top", "left", "right"]}
+    >
       {title && <Header title={title} icon={icon} action={action} />}
       {children}
     </SafeAreaView>
