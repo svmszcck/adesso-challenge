@@ -25,9 +25,9 @@ const ErrorUI = () => {
         {ErrorMessages.GENERAL_ERROR}
       </ThemedText>
       <Button
-        title="ANA EKRANA GİT"
-        accessibilityLabel="Ana ekrana git"
-        onPress={() => router.navigate(Routes.HOME)}
+        title="ANA SAYFAYA GİT"
+        accessibilityLabel="Ana sayfaya git"
+        onPress={() => router.replace(Routes.HOME)}
       />
     </View>
   );

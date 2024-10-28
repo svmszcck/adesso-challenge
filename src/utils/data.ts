@@ -1,6 +1,7 @@
 import { MovieType } from "@/services/types";
 import type { ListItem } from "@/utils/modals/ListModal";
 import { movieTypes } from "@/constants";
+import type { InfiniteData } from "@tanstack/react-query";
 
 export const calculateNextPageParam = <T>(
   lastPage: Array<T> | undefined,
@@ -83,4 +84,10 @@ export const normalizeGenres = (genres?: string): string[] | undefined => {
   if (!genres) return;
 
   return genres.split(",");
+};
+
+export const parsePaginatedData = <T>(
+  data: InfiniteData<T[] | undefined, unknown>
+): T[] => {
+  return data.pages.flat().filter((item) => item !== undefined);
 };

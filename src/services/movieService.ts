@@ -24,7 +24,7 @@ export const fetchMovies = async (
     });
 
     if (!response || !response.data) {
-      console.error("There isn't any result");
+      console.error(ErrorMessages.NO_RESULT);
       return;
     }
 
@@ -49,7 +49,7 @@ export const fetchMovie = async (
     });
 
     if (!response || !response.data) {
-      console.error("There isn't any result");
+      console.error(ErrorMessages.NO_RESULT);
       return;
     }
 

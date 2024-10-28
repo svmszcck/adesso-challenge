@@ -2,11 +2,10 @@ import { useMemo, useState } from "react";
 import { useQueryClient, useInfiniteQuery } from "@tanstack/react-query";
 
 import { fetchMovies } from "@/services/movieService";
-import { calculateNextPageParam } from "@/utils/data";
+import { calculateNextPageParam, parsePaginatedData } from "@/utils/data";
 import type { MovieSummary } from "@/services/types";
 import useStore from "@/store";
 import HomeView from "./view";
-import { isAxiosError } from "axios";
 
 const Home = () => {
   const [refreshing, setsetRefreshing] = useState(false);
@@ -32,6 +31,12 @@ const Home = () => {
       calculateNextPageParam<MovieSummary>(lastPage, pages),
   });
 
+  const movies = useMemo(() => {
+    if (!data || !data.pages) return [];
+
+    return parsePaginatedData(data);
+  }, [data?.pages]);
+
   const resetData = () => {
     setsetRefreshing(true);
     queryClient.resetQueries({ queryKey: ["movies"] }).then(async () => {
@@ -39,12 +44,6 @@ const Home = () => {
       setsetRefreshing(false);
     });
   };
-
-  const movies = useMemo(() => {
-    if (!data || !data.pages) return [];
-
-    return data.pages.flat().filter((item) => item !== undefined);
-  }, [data?.pages]);
 
   const noData = isError || (isFetched && isSuccess && movies.length === 0);
 

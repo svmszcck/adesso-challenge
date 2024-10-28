@@ -15,7 +15,7 @@ const apiClient = axios.create({
 
 export const getData = <ApiResponse>(
   url: string,
-  params?: Record<string, any>
+  params?: Record<string, unknown>
 ): Promise<AxiosResponse<ApiResponse>> => {
   return apiClient.get<ApiResponse>(url, { params });
 };
