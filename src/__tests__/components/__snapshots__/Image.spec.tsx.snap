@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image matches snapshot 1`] = `
+<View>
+  <Image
+    resizeMode="cover"
+    source={1}
+    style={
+      [
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        undefined,
+      ]
+    }
+    testID="placeholder-image"
+  />
+  <Image
+    defaultSource={1}
+    onLoadEnd={[Function]}
+    onLoadStart={[Function]}
+    resizeMode="cover"
+    source={
+      {
+        "uri": "http://valid.url/image.jpg",
+      }
+    }
+    testID="custom-image"
+  />
+</View>
+`;

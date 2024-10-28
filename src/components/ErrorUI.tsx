@@ -3,6 +3,7 @@ import { Image, View, StyleSheet } from "react-native";
 import { router } from "expo-router";
 
 import { Button } from "@/components";
+import { Routes } from "@/constants";
 import Error from "@/assets/images/error.png";
 
 const ErrorUI = () => {
@@ -12,7 +13,7 @@ const ErrorUI = () => {
       <Button
         title="GO TO HOME"
         accessibilityLabel="Go to Home"
-        onPress={() => router.navigate("/(home)")}
+        onPress={() => router.navigate(Routes.HOME)}
       />
     </View>
   );

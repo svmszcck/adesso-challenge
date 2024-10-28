@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useMemo } from "react";
+import { useEffect } from "react";
 import { StyleSheet, useColorScheme } from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -13,11 +13,12 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { CommonColors } from "@/constants";
 
 import "react-native-reanimated";
 
 SplashScreen.preventAutoHideAsync();
-NavigationBar.setBackgroundColorAsync("white");
+NavigationBar.setBackgroundColorAsync(CommonColors.WHITE);
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ export default function RootLayout() {
       <StatusBar backgroundColor={textPaleColor} />
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>

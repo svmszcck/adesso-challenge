@@ -4,6 +4,7 @@ import Modal from "react-native-modal";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { CommonColors } from "@/constants";
 
 type CustomModalProps = {
   visible: boolean;
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   },
   content: {
     position: "relative",
-    backgroundColor: "white",
+    backgroundColor: CommonColors.WHITE,
     padding: 22,
     justifyContent: "center",
     alignItems: "center",

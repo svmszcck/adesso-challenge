@@ -4,7 +4,7 @@ import { create } from "zustand";
 type Store = {
   type: MovieType | undefined;
   year: string | undefined;
-  searchValue: string | undefined;
+  searchValue: string;
   setType: (type: MovieType) => void;
   setYear: (year: string) => void;
   setSearchValue: (searchValue: string) => void;
@@ -14,7 +14,7 @@ type Store = {
 const useStore = create<Store>((set) => ({
   type: undefined,
   year: undefined,
-  searchValue: undefined,
+  searchValue: "avengers",
   setType: (type) => set({ type }),
   setYear: (year) => set({ year }),
   setSearchValue: (searchValue) => set({ searchValue }),

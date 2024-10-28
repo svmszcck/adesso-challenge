@@ -1,15 +1,8 @@
-import React, { useState } from "react";
-import {
-  View,
-  Image,
-  StyleSheet,
-  StyleProp,
-  ImageStyle,
-  ImageSourcePropType,
-} from "react-native";
+import React, { useState, memo } from "react";
+import { View, Image, StyleSheet, StyleProp, ImageStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { isValidUrl } from "@/utils/data";
+import { isValidUrl } from "@/utils/validation";
 import Placeholder from "@/assets/images/placeholder.jpg";
 
 type CustomImageProps = {
@@ -32,6 +25,7 @@ const CustomImage: React.FC<CustomImageProps> = ({
           source={Placeholder}
           style={[styles.placeholder, style]}
           resizeMode="cover"
+          testID="placeholder-image"
         />
       )}
       <Image
@@ -41,11 +35,12 @@ const CustomImage: React.FC<CustomImageProps> = ({
         onLoadEnd={() => setLoading(false)}
         defaultSource={Placeholder}
         resizeMode="cover"
+        testID="custom-image"
       />
       {withGradient && !loading && isValidUrl(src) && (
         <LinearGradient
-          colors={["transparent", "#000000"]}
-          style={styles.gradient}
+          colors={["rgba(0, 0, 0, 0.4)", "rgba(0, 0, 0, 0.8)"]}
+          style={styles.overlay}
         />
       )}
     </View>
@@ -60,11 +55,11 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
-  gradient: {
+  overlay: {
     position: "absolute",
     bottom: 0,
     width: "100%",
-    height: 80,
+    height: "100%",
   },
 });
 

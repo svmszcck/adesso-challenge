@@ -1,8 +1,8 @@
-import { MovieType } from "@/services/types";
+import type { ListItem } from "@/utils/modals/ListModal";
 
-export const movieTypes: { title: string; value: MovieType }[] = [
-  { title: "Movie", value: "movie" },
-  { title: "Series", value: "series" },
-  { title: "Episode", value: "episode" },
-  { title: "Game", value: "game" },
+export const movieTypes: ListItem[] = [
+  { title: "Film", value: "movie" },
+  { title: "Dizi", value: "series" },
+  { title: "Bölüm", value: "episode" },
+  { title: "Oyun", value: "game" },
 ];

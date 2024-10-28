@@ -1,6 +1,11 @@
 const tintColorLight = "#0a7ea4";
 const tintColorDark = "#fff";
-export const white = "#fff";
+
+export enum CommonColors {
+  WHITE = "#ffffff",
+  BLACK = "#000000",
+  GRAY_LIGHT = "#EEEEEE",
+}
 
 export const Colors = {
   light: {

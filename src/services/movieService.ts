@@ -1,10 +1,12 @@
 import axios, { AxiosResponse } from "axios";
 
 import { getData } from "./apiClient";
-import { SearchAPIResult, MovieAPIResult, Movie } from "./types";
+import { SearchAPIResult, MovieAPIResult, Movie, MovieType } from "./types";
 
 export const fetchMovies = async (
   searchValue: string,
+  type?: MovieType,
+  year?: string,
   page?: number
 ): Promise<SearchAPIResult["Search"] | undefined> => {
   try {
@@ -15,6 +17,8 @@ export const fetchMovies = async (
     const response = await getData<SearchAPIResult>("/", {
       r: "json",
       s: searchValue,
+      type,
+      y: year,
       page,
     });
 

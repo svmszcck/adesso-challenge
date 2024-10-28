@@ -3,6 +3,7 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import ThemedText from "@/components/ThemedText";
+import Spacing from "@/constants/spacing";
 
 type HeaderProps = {
   title: string;
@@ -30,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ title, icon, action }) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    padding: 20,
+    padding: Spacing.LARGE,
   },
   header: {
     flexDirection: "row",
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   title: {
-    marginBottom: 10,
+    marginBottom: Spacing.SMALL,
   },
 });
 

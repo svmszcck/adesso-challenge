@@ -1,26 +1,36 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { CommonColors } from "@/constants";
 
 type SearchProps = {
   placeholder?: string;
-  onSubmit: (value: string) => void;
+  value: string;
+  setValue: (value: string) => void;
+  defaultValue?: string;
+  onSubmit?: () => void;
 };
 
-const SearchBar: React.FC<SearchProps> = ({ placeholder, onSubmit }) => {
-  const [value, setValue] = useState<string>("");
-
+const SearchBar: React.FC<SearchProps> = ({
+  value,
+  setValue,
+  placeholder,
+  onSubmit,
+  defaultValue,
+}) => {
   return (
     <View style={styles.container}>
       <Ionicons name="search" size={20} color="black" style={styles.icon} />
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        onChangeText={(value) => setValue(value)}
+        value={value}
+        onChangeText={(text) => setValue(text)}
         placeholderTextColor="#aaa"
-        onSubmitEditing={() => onSubmit(value)}
-        selectionColor={"black"}
+        onSubmitEditing={onSubmit}
+        selectionColor={CommonColors.BLACK}
         clearButtonMode="always"
+        defaultValue={defaultValue}
       />
     </View>
   );

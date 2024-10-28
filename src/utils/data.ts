@@ -1,22 +1,22 @@
+import { MovieType } from "@/services/types";
 import type { ListItem } from "@/utils/modals/ListModal";
+import { movieTypes } from "@/constants";
 
 export const calculateNextPageParam = <T>(
   lastPage: Array<T> | undefined,
-  pages: any
+  pages: (T[] | undefined)[]
 ): number | undefined => {
   return lastPage && lastPage.length > 0 ? pages.length + 1 : undefined;
 };
 
+// Increase image size if originalUrl is valid
 export const updateImageSize = (
   originalUrl: string,
   newValue: number
 ): string | undefined => {
-  // Regular expression to check for "SX" followed by digits before ".jpg"
   const regex = /SX\d+\.jpg$/i;
 
-  // Check if the original string matches the regex
   if (regex.test(originalUrl)) {
-    // Replace the value after SX using a regular expression
     const updatedUrl = originalUrl.replace(/SX\d+/i, `SX${newValue}`);
 
     return updatedUrl;
@@ -51,16 +51,30 @@ export const normalizeListData = (data: string[]): ListItem[] => {
   }));
 };
 
-export const isValidUrl = (value?: string): boolean | undefined => {
-  if (!value) return;
+export const getListItem = (
+  data: ListItem[],
+  value?: string
+): ListItem | undefined => {
+  return data.find((item) => item.value === value);
+};
 
-  let url;
+export const normalizeFilterText = (
+  type?: MovieType,
+  year?: string
+): string => {
+  if (!type && !year) return "-";
 
-  try {
-    url = new URL(value);
-  } catch (_) {
-    return false;
+  let result = "";
+  const title = getListItem(movieTypes, type)?.title;
+  const titleExist = type && title;
+
+  if (titleExist) {
+    result = result.concat(`Tür: ${title}`);
   }
 
-  return url.protocol === "http:" || url.protocol === "https:";
+  if (year) {
+    result = result.concat(`${titleExist ? " , " : ""}Yıl: ${year}`);
+  }
+
+  return result;
 };

@@ -3,17 +3,16 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { movieTypes } from "@/constants/api";
+import { movieTypes } from "@/constants";
 import ListModal from "@/utils/modals/ListModal";
-import useStore from "@/store";
 import { Button, ThemedText } from "@/components";
 import { MovieType } from "@/services/types";
 import { generateYearRange, normalizeListData } from "@/utils/data";
 
 type FilterProps = {
-  onSubmit?: () => void;
+  onClear?: () => void;
   type: string | undefined;
-  setType: (value: string) => void;
+  setType: (value: MovieType) => void;
   year: string | undefined;
   setYear: (value: string) => void;
 };
@@ -23,7 +22,7 @@ const Filter: React.FC<FilterProps> = ({
   setType,
   year,
   setYear,
-  onSubmit,
+  onClear,
 }) => {
   const textPaleColor = useThemeColor({}, "textPale");
 
@@ -72,7 +71,7 @@ const Filter: React.FC<FilterProps> = ({
         <Ionicons name="chevron-down" size={20} color={textPaleColor} />
       </TouchableOpacity>
 
-      {onSubmit && <Button title="Filtrele" onPress={() => {}} isSmall />}
+      {onClear && <Button title="Sıfırla" onPress={onClear} isSmall />}
 
       <ListModal
         visible={typeModal}

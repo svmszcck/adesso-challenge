@@ -2,8 +2,8 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { useColorScheme } from "react-native";
 
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
-import { Colors } from "@/constants/colors";
+import { TabBarIcon } from "@/components";
+import { Colors } from "@/constants";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -40,7 +40,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="favorites"
+        name="(favorites)"
         options={{
           title: "Favorites",
           tabBarIcon: ({ color, focused }) => (

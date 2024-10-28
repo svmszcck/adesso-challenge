@@ -1,8 +1,9 @@
 import { StyleSheet, ViewProps } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { Ionicons } from "@expo/vector-icons";
+import Spacing from "@/constants/spacing";
 import Header from "./Header";
 
 export type ScreenContainerProps = ViewProps & {
@@ -38,7 +39,7 @@ const ScreenContainer = ({
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    padding: 20,
+    padding: Spacing.LARGE,
     paddingBottom: 0,
   },
   header: {
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   title: {
-    marginBottom: 10,
+    marginBottom: Spacing.SMALL,
   },
 });
 

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  View,
   FlatList,
   StyleSheet,
   TouchableOpacity,
@@ -12,8 +11,9 @@ import { Link } from "expo-router";
 
 import { screenWidth } from "@/utils/ui";
 import { ThemedText } from "@/components";
-import CustomImage from "./Image";
 import type { MovieGridItem } from "@/services/types";
+import { Spacing } from "@/constants";
+import CustomImage from "./Image";
 
 type ImageGridProps = {
   data: MovieGridItem[];
@@ -37,7 +37,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({
   const renderItem: ListRenderItem<MovieGridItem> = ({ item }) => (
     <Link
       href={{
-        pathname: "/(home)/details",
+        pathname: "/details",
         params: { id: item.imdbID },
       }}
       asChild
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 1,
-    margin: 10,
+    margin: Spacing.SMALL,
     marginBottom: 40,
     aspectRatio: 4 / 5,
     maxWidth: screenWidth() / 2 - 30,
