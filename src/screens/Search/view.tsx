@@ -16,7 +16,7 @@ import { CommonColors } from "@/constants";
 
 const SearchView: React.FC<SearchViewProps> = (props) => {
   return (
-    <ScreenContainer title="Search">
+    <ScreenContainer title="Arama">
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <SearchBar

@@ -16,7 +16,7 @@ const FavoritesView: React.FC<FavoritesViewProps> = ({
 }) => {
   return (
     <ScreenContainer
-      title="Favorites"
+      title="Favoriler"
       icon="trash-outline"
       action={favorites ? deleteFavorites : deleteWarning}
     >

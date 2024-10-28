@@ -17,7 +17,7 @@ import type { HomeViewProps } from "./types";
 const HomeView: React.FC<HomeViewProps> = (props) => {
   return (
     <ScreenContainer
-      title="Movies"
+      title="Filmler"
       icon="search"
       action={() => router.navigate(Routes.SEARCH)}
     >
