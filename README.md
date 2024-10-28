@@ -26,6 +26,8 @@ run **"yarn test"**
 
 - I could test the app only on Android. I didn't have chance to test it on iOS as I don't have a Mac & iPhone at the moment.
 
-- I have added accessibility features.
+- I have added accessibility support(with accessbility attributes for React Native).
 
 - A logging service can be used. That way logging logic will be centralized and it will be easier to track the errors inside the application.
+
+- I have added theming & dark mode support. If you change the phone's theme you will see the change on the app automatically.
