@@ -15,8 +15,6 @@ import * as SplashScreen from "expo-splash-screen";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import useNetworkStatus from "@/hooks/useNetworkStatus";
 
-import "react-native-reanimated";
-
 SplashScreen.preventAutoHideAsync();
 
 // Make navigation bar transparent

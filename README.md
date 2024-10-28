@@ -1,0 +1,31 @@
+# Adesso Challenge
+
+**How to run locally?:**
+
+run **"yarn install"** and then **"yarn start"**.
+
+**How to run tests?:**
+
+run **"yarn test"**
+
+**Used Technologies:**
+
+- Expo v51
+- Typescript for static type checking
+- Expo Router for navigation(file based routing)
+- React Query for data fetching & caching
+- zustand for state management
+
+**Some Notes:**
+
+- API is very limited and it doesn't provide an endpoint to fetch all the movies(there are only 2 endpoints: for searching and for fetching a specific movie). That's why I am using "avengers" as the search value when app starts to fetch the movies.
+
+- There should be more abstraction in the codebase. As this is a small project it is acceptable to use domain specific classes & objects but in a production-level application there should be more abstraction and separation of concerns(SOLID principles).
+
+- There is env variable only for the development environment in the server application. Ideally there should be env files for other environments as well(staging, production etc.).
+
+- I could test the app only on Android. I didn't have chance to test it on iOS as I don't have a Mac & iPhone at the moment.
+
+- I have added accessibility features.
+
+- A logging service can be used. That way logging logic will be centralized and it will be easier to track the errors inside the application.
