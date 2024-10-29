@@ -25,7 +25,6 @@ const Filter: React.FC<FilterProps> = ({
   onClear,
 }) => {
   const textPaleColor = useThemeColor({}, "textPale");
-
   const [typeModal, setTypeModal] = useState<boolean>(false);
   const [yearModal, setYearModal] = useState<boolean>(false);
 

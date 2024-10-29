@@ -41,6 +41,7 @@ describe("Image Component", () => {
   it("matches snapshot", () => {
     (checkURL as jest.Mock).mockReturnValue(true);
     const { toJSON } = render(<Image src="http://valid.url/image.jpg" />);
+
     expect(toJSON()).toMatchSnapshot();
   });
 });

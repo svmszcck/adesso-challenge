@@ -25,7 +25,7 @@ jest.mock("@/services/movieService", () => ({
   fetchMovie: jest.fn(),
 }));
 
-describe("Details Component", () => {
+describe("Details Screen", () => {
   const mockData = {
     Title: "Inception",
     imdbID: "tt1375666",
@@ -57,15 +57,20 @@ describe("Details Component", () => {
     render(<Details />);
 
     await screen.findByText(mockData.Title);
-    expect(itemExists).toHaveBeenCalledWith("movies", mockData.imdbID);
+
+    await waitFor(() => {
+      expect(itemExists).toHaveBeenCalledWith("movies", mockData.imdbID);
+    });
   });
 
-  test("shows ErrorUI on error", () => {
+  test("shows ErrorUI on error", async () => {
     (useQuery as jest.Mock).mockReturnValue({ isError: true, data: null });
 
     render(<Details />);
 
-    expect(screen.getByText(ErrorMessages.GENERAL_ERROR)).toBeTruthy();
+    await waitFor(() => {
+      expect(screen.getByText(ErrorMessages.GENERAL_ERROR)).toBeTruthy();
+    });
   });
 
   test("toggles favorite state and shows correct alerts", async () => {
@@ -74,9 +79,11 @@ describe("Details Component", () => {
       isError: false,
       isLoading: false,
     });
+
     (itemExists as jest.Mock).mockResolvedValueOnce(false); // Initial check shows not favorite
 
     render(<Details />);
+
     await screen.findByText(mockData.Title);
 
     fireEvent.press(screen.getByTestId("floating-bıtton"));
@@ -96,7 +103,7 @@ describe("Details Component", () => {
     });
   });
 
-  test("computes image URL correctly", () => {
+  test("computes image URL correctly", async () => {
     (useQuery as jest.Mock).mockReturnValue({
       data: mockData,
       isError: false,
@@ -107,8 +114,10 @@ describe("Details Component", () => {
 
     const imageUrl = updateImageSize(mockData.Poster, 1200);
 
-    expect(screen.getByTestId("custom-image")).toHaveProp("source", {
-      uri: imageUrl,
+    await waitFor(() => {
+      expect(screen.getByTestId("custom-image")).toHaveProp("source", {
+        uri: imageUrl,
+      });
     });
   });
 });

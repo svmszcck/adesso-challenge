@@ -1,5 +1,10 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react-native";
+import {
+  render,
+  fireEvent,
+  screen,
+  waitFor,
+} from "@testing-library/react-native";
 import Filter from "@/components/Filter";
 
 describe("Filter Component", () => {
@@ -27,63 +32,74 @@ describe("Filter Component", () => {
     expect(screen.getByText("Yayınlanma Yılı")).toBeTruthy();
   });
 
-  it("opens type modal when 'Tür' button is pressed", () => {
+  it("opens type modal when 'Tür' button is pressed", async () => {
     render(<Filter {...defaultProps} />);
 
     // Open type modal
+
     fireEvent.press(screen.getByText("Tür"));
 
-    // Check if type modal opens
-    expect(screen.getByText("Tür Seçerek Filtrele")).toBeTruthy();
+    await waitFor(() => {
+      // Check if type modal opens
+      expect(screen.getByText("Tür Seçerek Filtrele")).toBeTruthy();
+    });
   });
 
-  it("opens year modal when 'Yayınlanma Yılı' button is pressed", () => {
+  it("opens year modal when 'Yayınlanma Yılı' button is pressed", async () => {
     render(<Filter {...defaultProps} />);
 
     // Open year modal
     fireEvent.press(screen.getByText("Yayınlanma Yılı"));
 
-    // Check if year modal opens
-    expect(screen.getByText("Yıl Seçerek Filtrele")).toBeTruthy();
+    await waitFor(() => {
+      // Check if year modal opens
+      expect(screen.getByText("Yıl Seçerek Filtrele")).toBeTruthy();
+    });
   });
 
-  it("calls setType and closes type modal on selection", () => {
+  it("calls setType and closes type modal on selection", async () => {
     render(<Filter {...defaultProps} />);
 
     // Open type modal and select a type
     fireEvent.press(screen.getByText("Tür"));
     fireEvent.press(screen.getByText("Film"));
 
-    // Check if setType was called with the correct value
-    expect(mockSetType).toHaveBeenCalledWith("movie");
+    await waitFor(() => {
+      // Check if setType was called with the correct value
+      expect(mockSetType).toHaveBeenCalledWith("movie");
+    });
   });
 
-  it("calls setYear and closes year modal on selection", () => {
+  it("calls setYear and closes year modal on selection", async () => {
     render(<Filter {...defaultProps} />);
 
     // Open year modal and select a year
     fireEvent.press(screen.getByText("Yayınlanma Yılı"));
     fireEvent.press(screen.getByText("2022"));
 
-    // Check if setYear was called with the correct value
-    expect(mockSetYear).toHaveBeenCalledWith("2022");
+    await waitFor(() => {
+      // Check if setYear was called with the correct value
+      expect(mockSetYear).toHaveBeenCalledWith("2022");
+    });
   });
 
   it("renders clear button if type or year is set", () => {
-    render(<Filter {...defaultProps} type="Action" />);
+    render(<Filter {...defaultProps} type="action" />);
 
     // Check that the clear button is rendered
     expect(screen.getByText("Sıfırla")).toBeTruthy();
   });
 
-  it("calls onClear when clear button is pressed", () => {
-    render(<Filter {...defaultProps} type="Action" year="2022" />);
+  it("calls onClear when clear button is pressed", async () => {
+    render(<Filter {...defaultProps} type="action" year="2022" />);
 
     // Press clear button
     fireEvent.press(screen.getByText("Sıfırla"));
 
-    // Verify onClear callback
-    expect(mockOnClear).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      // Verify onClear callback
+      expect(mockOnClear).toHaveBeenCalledTimes(1);
+    });
   });
 
   it("matches snapshot", () => {
@@ -96,6 +112,7 @@ describe("Filter Component", () => {
         onClear={mockOnClear}
       />
     );
+
     expect(toJSON()).toMatchSnapshot();
   });
 });

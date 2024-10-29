@@ -51,6 +51,7 @@ describe("Custom Button Component", () => {
     const { toJSON } = render(
       <Button title="Click Me" onPress={mockOnPress} />
     );
+
     expect(toJSON()).toMatchSnapshot();
   });
 });

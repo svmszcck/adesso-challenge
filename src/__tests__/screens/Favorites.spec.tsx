@@ -19,7 +19,7 @@ jest.mock(
 );
 jest.mock("@/utils/ui", () => require("@/utils/__mocks__/ui").default);
 
-describe("Favorites Component", () => {
+describe("Favorites Screen", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -54,22 +54,26 @@ describe("Favorites Component", () => {
     expect(screen.getByText("Inception")).toBeTruthy();
   });
 
-  it("handles empty favorites", () => {
+  it("handles empty favorites", async () => {
     (loadData as jest.Mock).mockResolvedValueOnce([]);
 
     renderScreen();
 
-    expect(screen.getByText(ErrorMessages.NO_FAVORITE_DATA)).toBeTruthy();
+    await waitFor(() => {
+      expect(screen.getByText(ErrorMessages.NO_FAVORITE_DATA)).toBeTruthy();
+    });
   });
 
-  it("shows warning if favorites list is empty", () => {
+  it("shows warning if favorites list is empty", async () => {
     renderScreen();
 
     fireEvent.press(screen.getByTestId("action-button"));
 
-    expect(showAlert).toHaveBeenCalledWith(
-      AlertMessages.ERROR,
-      AlertMessages.FAV_LIST_EMPTY_MESSAGE
-    );
+    await waitFor(() => {
+      expect(showAlert).toHaveBeenCalledWith(
+        AlertMessages.ERROR,
+        AlertMessages.FAV_LIST_EMPTY_MESSAGE
+      );
+    });
   });
 });

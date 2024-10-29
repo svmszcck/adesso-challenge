@@ -15,7 +15,7 @@ jest.mock(
 );
 jest.mock("@/utils/ui", () => require("@/utils/__mocks__/ui").default);
 
-describe("Search Component", () => {
+describe("Search Screen", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
