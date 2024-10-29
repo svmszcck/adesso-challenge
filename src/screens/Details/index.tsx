@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useLocalSearchParams } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 import { useQuery } from "@tanstack/react-query";
 
 import { ErrorUI } from "@/components";
@@ -17,6 +18,7 @@ const DEBOUNCE_TIME = 300;
 const Details = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [favorite, setFavorite] = useState<boolean>(false);
+  const navigation = useNavigation();
   const params = useLocalSearchParams<{ id: string }>();
   const { data, isError, isLoading, isFetching } = useQuery({
     queryKey: ["movie", params.id],
@@ -25,7 +27,11 @@ const Details = () => {
   });
 
   useEffect(() => {
-    checkFavorite();
+    const unsubscribe = navigation.addListener("focus", () => {
+      checkFavorite();
+    });
+
+    return unsubscribe;
   }, [data]);
 
   const checkFavorite = async () => {
