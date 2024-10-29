@@ -36,10 +36,11 @@ const ListModal: React.FC<ListModalProps> = ({
   const separatorColor = useThemeColor({}, "separator");
   const activityIndicatorColor = useThemeColor({}, "activityIndicator");
 
+  // No need to use React.memo for this item component because it only renders a text
   const renderItem: ListRenderItem<ListItem> = ({ item }) => (
     <TouchableOpacity
       style={styles.modalListItem}
-      hitSlop={10}
+      hitSlop={10} // This makes UX better by adding extra space for clickable area
       onPress={() => onSelect(item.value)}
     >
       <ThemedText

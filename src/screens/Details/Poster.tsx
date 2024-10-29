@@ -33,13 +33,13 @@ const Poster: React.FC<PosterProps> = ({ data, imageURL, setModalVisible }) => {
           )}
         </Pressable>
       )}
-      <Ionicons
-        name="chevron-back"
-        size={26}
-        color={CommonColors.WHITE}
+      <Pressable
+        hitSlop={10} // This makes UX better by adding extra space for clickable area
         style={styles.backIcon}
         onPress={() => router.back()}
-      />
+      >
+        <Ionicons name="chevron-back" size={32} color={CommonColors.WHITE} />
+      </Pressable>
     </View>
   );
 };
