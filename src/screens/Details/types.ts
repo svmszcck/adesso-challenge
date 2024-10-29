@@ -9,3 +9,10 @@ export type DetailsViewProps = {
   favorite: boolean;
   toggleFavorite: () => void;
 };
+
+export type PosterProps = Pick<
+  DetailsViewProps,
+  "data" | "imageURL" | "setModalVisible"
+>;
+
+export type InfoProps = Pick<DetailsViewProps, "data">;
