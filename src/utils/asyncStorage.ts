@@ -1,5 +1,6 @@
-import { MovieGridItem } from "@/services/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { MovieGridItem } from "@/services/types";
 
 export const saveData = async (key: string, data: unknown): Promise<void> => {
   try {

@@ -1,21 +1,16 @@
-import React, { useState, useCallback } from "react";
-import { useFocusEffect } from "expo-router";
+import React, { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import { loadData, clearData } from "@/utils/asyncStorage";
 import type { MovieGridItem } from "@/services/types";
 import { showAlert } from "@/utils/ui";
-import { AlertMessages } from "@/constants";
+import AlertMessages from "@/constants/alertMessages";
 import FavoritesView from "./view";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState<MovieGridItem[]>();
   const [refreshing, setRefreshing] = useState<boolean>();
-
-  useFocusEffect(
-    useCallback(() => {
-      getFavorites();
-    }, [])
-  );
+  const navigation = useNavigation();
 
   const getFavorites = async () => {
     setRefreshing(true);
@@ -24,6 +19,14 @@ const Favorites = () => {
     setFavorites(result as MovieGridItem[]);
     setRefreshing(false);
   };
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      getFavorites();
+    });
+
+    return unsubscribe;
+  }, []);
 
   const deleteFavorites = () => {
     showAlert(

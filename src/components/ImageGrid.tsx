@@ -10,9 +10,9 @@ import {
 import { Link } from "expo-router";
 
 import { screenWidth } from "@/utils/ui";
-import { ThemedText } from "@/components";
+import ThemedText from "@/components/ThemedText";
 import type { MovieGridItem } from "@/services/types";
-import { Spacing } from "@/constants";
+import Spacing from "@/constants/spacing";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import CustomImage from "./Image";
 
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     margin: Spacing.SMALL,
     marginBottom: 40,
     aspectRatio: 4 / 5,
-    maxWidth: screenWidth() / 2 - 30,
+    maxWidth: screenWidth / 2 - 30,
   },
   image: {
     width: "100%",

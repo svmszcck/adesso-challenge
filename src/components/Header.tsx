@@ -29,6 +29,7 @@ const Header: React.FC<HeaderProps> = ({ title, icon, action }) => {
           accessibilityLabel={`${title} eylem butonu`}
           accessibilityHint="Eylemi gerçekleştirmek için basın"
           accessibilityRole="button"
+          testID="action-button"
         >
           <Ionicons name={icon} size={26} color={color} />
         </TouchableOpacity>

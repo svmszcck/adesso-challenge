@@ -26,11 +26,11 @@ describe("UI Utility Functions", () => {
   });
 
   it("should return the correct screen width", () => {
-    expect(screenWidth()).toBe(400);
+    expect(screenWidth).toBe(400);
   });
 
   it("should return the correct screen height", () => {
-    expect(screenHeight()).toBe(800);
+    expect(screenHeight).toBe(800);
   });
 
   describe("showAlert", () => {

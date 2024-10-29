@@ -110,6 +110,7 @@ const DetailsView: React.FC<DetailsViewProps> = (props) => {
           color={activityIndicatorColor}
           size={30}
           style={styles.loadingSpinner}
+          testID="loading-indicator"
         />
       ) : (
         <ScrollView

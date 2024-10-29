@@ -1,11 +1,13 @@
 import { View, Image } from "react-native";
 
-import { ScreenContainer, ImageGrid, ThemedText } from "@/components";
-import { ErrorMessages } from "@/constants";
+import ScreenContainer from "@/components/ScreenContainer";
+import ImageGrid from "@/components/ImageGrid";
+import ThemedText from "@/components/ThemedText";
+import ErrorMessages from "@/constants/errorMessages";
+import { isEmpty } from "@/utils/validation";
 import NoResult from "@/assets/images/no-result.png";
 import styles from "./styles";
 import type { FavoritesViewProps } from "./types";
-import { isEmpty } from "@/utils/validation";
 
 const FavoritesView: React.FC<FavoritesViewProps> = ({
   favorites,
