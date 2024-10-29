@@ -4,6 +4,8 @@
 
 run **"yarn install"** and then **"yarn start"**.
 
+Used Node.js version: v20.18.0
+
 **How to run tests?:**
 
 run **"yarn test"**
