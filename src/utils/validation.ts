@@ -23,7 +23,8 @@ export const checkURL = (value: string): boolean => {
 
   try {
     url = new URL(value);
-  } catch (_) {
+  } catch (error) {
+    console.log(error);
     return false;
   }
 

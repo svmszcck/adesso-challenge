@@ -1,4 +1,4 @@
-import { renderHook, act, waitFor } from "@testing-library/react-native";
+import { renderHook, waitFor } from "@testing-library/react-native";
 import NetInfo from "@react-native-community/netinfo";
 
 import { showAlert } from "@/utils/ui";

@@ -1,4 +1,4 @@
-import { useCallback, useState, Dispatch, SetStateAction } from "react";
+import { useMemo, useState } from "react";
 
 import { debounce } from "@/utils/general";
 import { addItem, removeItem, itemExists } from "@/utils/asyncStorage";
@@ -6,7 +6,7 @@ import type { MovieAPIResult } from "@/services/types";
 import { showAlert } from "@/utils/ui";
 import { AlertMessages } from "@/constants";
 
-const DEBOUNCE_TIME = 300;
+const DEBOUNCE_TIME = 100;
 
 type ReturnType = {
   favorite: boolean;
@@ -17,25 +17,26 @@ type ReturnType = {
 const useToggleFavorite = (data: MovieAPIResult | undefined): ReturnType => {
   const [favorite, setFavorite] = useState<boolean>(false);
 
-  const debouncedToggleFavorite = useCallback(
-    debounce(() => {
-      if (!data) return;
+  const debouncedToggleFavorite = useMemo(
+    () =>
+      debounce(() => {
+        if (!data) return;
 
-      const { Title, imdbID, Poster } = data;
+        const { Title, imdbID, Poster } = data;
 
-      if (favorite) {
-        removeItem("movies", data.imdbID);
-        setFavorite(false);
-        showAlert(AlertMessages.SUCCESS, AlertMessages.FAV_REMOVED_MESSAGE);
-      } else {
-        const parsedData = { Title, imdbID, Poster };
+        if (favorite) {
+          setFavorite(false);
+          removeItem("movies", data.imdbID);
+          showAlert(AlertMessages.SUCCESS, AlertMessages.FAV_REMOVED_MESSAGE);
+        } else {
+          const parsedData = { Title, imdbID, Poster };
 
-        addItem("movies", parsedData);
-        setFavorite(true);
-        showAlert(AlertMessages.SUCCESS, AlertMessages.FAV_ADDED_MESSAGE);
-      }
-    }, DEBOUNCE_TIME),
-    [data, favorite, removeItem, addItem, setFavorite, showAlert]
+          setFavorite(true);
+          addItem("movies", parsedData);
+          showAlert(AlertMessages.SUCCESS, AlertMessages.FAV_ADDED_MESSAGE);
+        }
+      }, DEBOUNCE_TIME),
+    [data, favorite, setFavorite]
   );
 
   const toggleFavorite = () => {

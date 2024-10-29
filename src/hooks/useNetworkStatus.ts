@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import NetInfo from "@react-native-community/netinfo";
 
 import { showAlert } from "@/utils/ui";

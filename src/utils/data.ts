@@ -4,7 +4,7 @@ import { movieTypes } from "@/constants";
 import type { InfiniteData } from "@tanstack/react-query";
 
 export const calculateNextPageParam = <T>(
-  lastPage: Array<T> | undefined,
+  lastPage: T[] | undefined,
   pages: (T[] | undefined)[]
 ): number | undefined => {
   return lastPage && lastPage.length > 0 ? pages.length + 1 : undefined;
