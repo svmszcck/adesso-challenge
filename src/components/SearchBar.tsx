@@ -38,6 +38,7 @@ const SearchBar: React.FC<SearchProps> = ({
         defaultValue={defaultValue}
         accessibilityLabel="Arama metni girişi"
         accessibilityHint="Arama metnini buraya girin"
+        testID="search-input"
       />
     </View>
   );

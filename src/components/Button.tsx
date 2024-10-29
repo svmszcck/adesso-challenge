@@ -11,6 +11,7 @@ type ButtonProps = {
   onPress: () => void;
   style?: ViewStyle;
   isSmall?: boolean;
+  testID?: string;
 };
 
 const CustomButton: React.FC<ButtonProps> = ({
@@ -19,6 +20,7 @@ const CustomButton: React.FC<ButtonProps> = ({
   onPress,
   style,
   isSmall,
+  testID,
 }) => {
   const textColor = useThemeColor({}, "text");
   const backgroundColor = useThemeColor({}, "background");
@@ -35,6 +37,7 @@ const CustomButton: React.FC<ButtonProps> = ({
       accessibilityRole="button"
       accessible
       activeOpacity={0.8}
+      testID={testID}
     >
       <ThemedText style={[styles.buttonText, { color: backgroundColor }]}>
         {title}

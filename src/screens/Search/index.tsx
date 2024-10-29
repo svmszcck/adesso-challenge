@@ -22,6 +22,7 @@ const Search = () => {
       showErrorAlert(AlertMessages.SEARCH_INVALID_MESSAGE);
       return;
     }
+
     if (value) setSearchValue(value);
     if (localType) setType(localType);
     if (localYear) setYear(localYear);

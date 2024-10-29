@@ -49,6 +49,7 @@ const SearchView: React.FC<SearchViewProps> = (props) => {
             title="Arama Yap"
             onPress={props.handleSearch}
             style={styles.submitButton}
+            testID="search-button"
           />
         </View>
       </TouchableWithoutFeedback>

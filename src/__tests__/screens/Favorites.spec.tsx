@@ -13,14 +13,11 @@ import { showAlert } from "@/utils/ui";
 import AlertMessages from "@/constants/alertMessages";
 import ErrorMessages from "@/constants/errorMessages";
 
-jest.mock("@/utils/asyncStorage", () => ({
-  loadData: jest.fn(),
-  clearData: jest.fn(),
-}));
-
-jest.mock("@/utils/ui", () => ({
-  showAlert: jest.fn(),
-}));
+jest.mock(
+  "@/utils/asyncStorage",
+  () => require("@/utils/__mocks__/asyncStorage").default
+);
+jest.mock("@/utils/ui", () => require("@/utils/__mocks__/ui").default);
 
 describe("Favorites Component", () => {
   beforeEach(() => {

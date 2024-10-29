@@ -1,11 +1,11 @@
-// __tests__/movieService.test.js
 import { showErrorAlert } from "@/utils/ui";
 import { ErrorMessages } from "@/constants";
 import { getData } from "@/services/apiClient";
-import { fetchMovies, fetchMovie } from "@/services/movieService"; // adjust the path as needed
+import { fetchMovies, fetchMovie } from "@/services/movieService";
 
 jest.mock("@/services/apiClient");
-jest.mock("@/utils/ui");
+jest.mock("@/store", () => require("@/utils/__mocks__/store").default);
+jest.mock("@/utils/ui", () => require("@/utils/__mocks__/ui").default);
 
 describe("Movie Service Functions", () => {
   beforeAll(() => {

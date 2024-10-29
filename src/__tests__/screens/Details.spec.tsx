@@ -12,22 +12,17 @@ import { itemExists, addItem, removeItem } from "@/utils/asyncStorage";
 import { updateImageSize } from "@/utils/data";
 import { ErrorMessages } from "@/constants";
 
-jest.mock("@tanstack/react-query", () => ({
-  useQuery: jest.fn(),
-}));
-
-jest.mock("expo-router", () => ({
-  useLocalSearchParams: jest.fn(),
-}));
-
+jest.mock(
+  "@tanstack/react-query",
+  () => require("@/utils/__mocks__/react-query").default
+);
+jest.mock("expo-router", () => require("@/utils/__mocks__/router").default);
+jest.mock(
+  "@/utils/asyncStorage",
+  () => require("@/utils/__mocks__/asyncStorage").default
+);
 jest.mock("@/services/movieService", () => ({
   fetchMovie: jest.fn(),
-}));
-
-jest.mock("@/utils/asyncStorage", () => ({
-  itemExists: jest.fn(),
-  addItem: jest.fn(),
-  removeItem: jest.fn(),
 }));
 
 describe("Details Component", () => {
