@@ -2,8 +2,9 @@ import { useMemo, useState } from "react";
 import { useQueryClient, useInfiniteQuery } from "@tanstack/react-query";
 
 import { fetchMovies } from "@/services/movieService";
-import { calculateNextPageParam, parsePaginatedData } from "@/utils/data";
 import type { MovieSummary } from "@/services/types";
+import { calculateNextPageParam, parsePaginatedData } from "@/utils/data";
+import { isEmpty } from "@/utils/validation";
 import useStore from "@/store";
 import HomeView from "./view";
 
@@ -45,7 +46,7 @@ const Home = () => {
     });
   };
 
-  const noData = isError || (isFetched && isSuccess && movies.length === 0);
+  const noData = isError || (isFetched && isSuccess && isEmpty(movies));
 
   return (
     <HomeView

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, ViewStyle } from "react-native";
+import { TouchableOpacity, StyleSheet, ViewStyle } from "react-native";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
 import ThemedText from "./ThemedText";
@@ -14,8 +14,9 @@ const Badge: React.FC<BadgeProps> = ({ title, style }) => {
   const backgroundColor = useThemeColor({}, "background");
 
   return (
-    <View
+    <TouchableOpacity
       style={[styles.badgeContainer, { backgroundColor: textColor }, style]}
+      activeOpacity={0.8}
     >
       <ThemedText
         type="defaultSemiBold"
@@ -23,7 +24,7 @@ const Badge: React.FC<BadgeProps> = ({ title, style }) => {
       >
         {title}
       </ThemedText>
-    </View>
+    </TouchableOpacity>
   );
 };
 

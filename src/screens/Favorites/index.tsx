@@ -14,6 +14,7 @@ const Favorites = () => {
 
   const getFavorites = async () => {
     setRefreshing(true);
+
     const result = await loadData("movies");
 
     setFavorites(result as MovieGridItem[]);
