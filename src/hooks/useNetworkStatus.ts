@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import NetInfo from "@react-native-community/netinfo";
 
 import { showAlert } from "@/utils/ui";
 import { AlertMessages } from "@/constants";
 
 const useNetworkStatus = () => {
-  const [isConnected, setIsConnected] = useState<boolean | null>(null);
+  const isConnected = useRef<boolean | null>(null);
 
   useEffect(() => {
     // Subscribe to network state updates
     const unsubscribe = NetInfo.addEventListener((state) => {
-      if (isConnected !== null && state.isConnected !== isConnected) {
+      if (
+        isConnected.current !== null &&
+        state.isConnected !== isConnected.current
+      ) {
         // Show alert only when the connection status changes
         showAlert(
           AlertMessages.CON_STATUS_TITLE,
@@ -19,12 +22,13 @@ const useNetworkStatus = () => {
             : AlertMessages.CON_LOSE_MESSAGE
         );
       }
-      setIsConnected(state.isConnected);
+
+      isConnected.current = state.isConnected;
     });
 
     // Cleanup the listener on component unmount
     return () => unsubscribe();
-  }, [isConnected]);
+  }, []);
 };
 
 export default useNetworkStatus;

@@ -7,6 +7,9 @@ import {
 } from "@testing-library/react-native";
 import { useQuery } from "@tanstack/react-query";
 import { useLocalSearchParams } from "expo-router";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import Details from "@/screens/Details";
 import { itemExists, addItem, removeItem } from "@/utils/asyncStorage";
 import { updateImageSize } from "@/utils/data";
@@ -37,10 +40,21 @@ describe("Details Screen", () => {
     (useLocalSearchParams as jest.Mock).mockReturnValue({ id: "tt1375666" });
   });
 
+  const Stack = createNativeStackNavigator();
+
+  const renderScreen = () =>
+    render(
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Details} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+
   test("renders loading state initially", async () => {
     (useQuery as jest.Mock).mockReturnValue({ isLoading: true, data: null });
 
-    render(<Details />);
+    renderScreen();
 
     expect(screen.getByTestId("loading-indicator")).toBeTruthy();
   });
@@ -54,7 +68,7 @@ describe("Details Screen", () => {
 
     (itemExists as jest.Mock).mockResolvedValueOnce(true);
 
-    render(<Details />);
+    renderScreen();
 
     await screen.findByText(mockData.Title);
 
@@ -66,7 +80,7 @@ describe("Details Screen", () => {
   test("shows ErrorUI on error", async () => {
     (useQuery as jest.Mock).mockReturnValue({ isError: true, data: null });
 
-    render(<Details />);
+    renderScreen();
 
     await waitFor(() => {
       expect(screen.getByText(ErrorMessages.GENERAL_ERROR)).toBeTruthy();
@@ -82,7 +96,7 @@ describe("Details Screen", () => {
 
     (itemExists as jest.Mock).mockResolvedValueOnce(false); // Initial check shows not favorite
 
-    render(<Details />);
+    renderScreen();
 
     await screen.findByText(mockData.Title);
 
@@ -110,7 +124,7 @@ describe("Details Screen", () => {
       isLoading: false,
     });
 
-    render(<Details />);
+    renderScreen();
 
     const imageUrl = updateImageSize(mockData.Poster, 1200);
 
