@@ -12,7 +12,6 @@ const useNetworkStatus = () => {
     const unsubscribe = NetInfo.addEventListener((state) => {
       if (isConnected !== null && state.isConnected !== isConnected) {
         // Show alert only when the connection status changes
-
         showAlert(
           AlertMessages.CON_STATUS_TITLE,
           state.isConnected
