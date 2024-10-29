@@ -34,7 +34,9 @@ run **"yarn test"**
 
 - I have added theming & dark mode support. If you change the phone's theme you will see the change on the app automatically.
 
-- UI could be improved if I had more time.
+- UI & UX could be improved if I had more time. For example instead of using the native Alert component we can use a custom popup component for the success & error messages. On the movie details screen more info can be shown even though data is available on the screen.
+
+- Offline mode feature can be implemented in case there isn't internet connection. For now I am showing an error UI and alert message to inform the user.
 
 - I have used some optimization techniques for the FlatList(initialNumToRender, removeClippedSubviews, React.memo for the item component). I have tried to use the getItemLayout prop as well but it caused the items to flash. Position of the items were wrong too. It should be measured correctly and integrated in the future. I have calculated to height of the items with the help of onLayout callback.
 
