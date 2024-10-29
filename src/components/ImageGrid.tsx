@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -16,6 +16,8 @@ import Spacing from "@/constants/spacing";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import CustomImage from "./Image";
 
+const IMAGE_CONTAINER_OFFSET = 30;
+
 type ImageGridProps = {
   data: MovieGridItem[];
   paginated?: boolean;
@@ -25,6 +27,26 @@ type ImageGridProps = {
   refreshing?: boolean;
   hasNextPage?: boolean;
 };
+
+const ImageGridItem: React.FC<MovieGridItem> = memo(
+  (item) => (
+    <Link
+      href={{
+        pathname: "/details", // We can't use the enum value for this string
+        params: { id: item.imdbID },
+      }}
+      asChild
+    >
+      <TouchableOpacity style={styles.imageContainer} activeOpacity={0.8}>
+        <CustomImage src={item.Poster} style={styles.image} />
+        <ThemedText numberOfLines={1} style={styles.title}>
+          {item.Title}
+        </ThemedText>
+      </TouchableOpacity>
+    </Link>
+  ),
+  (prevProps, nextProps) => prevProps.imdbID === nextProps.imdbID // re-render only when id changes
+);
 
 const ImageGrid: React.FC<ImageGridProps> = ({
   data,
@@ -37,32 +59,23 @@ const ImageGrid: React.FC<ImageGridProps> = ({
 }) => {
   const activityIndicatorColor = useThemeColor({}, "activityIndicator");
 
-  const renderItem: ListRenderItem<MovieGridItem> = ({ item }) => (
-    <Link
-      href={{
-        pathname: "/details",
-        params: { id: item.imdbID },
-      }}
-      asChild
-    >
-      <TouchableOpacity style={styles.imageContainer} activeOpacity={0.8}>
-        <CustomImage src={item.Poster} style={styles.image} />
-        <ThemedText numberOfLines={1} style={styles.title}>
-          {item.Title}
-        </ThemedText>
-      </TouchableOpacity>
-    </Link>
-  );
-
   return data ? (
     <FlatList
       data={data}
-      renderItem={renderItem}
+      renderItem={({ item }) => (
+        <ImageGridItem
+          imdbID={item.imdbID}
+          Poster={item.Poster}
+          Title={item.Title}
+        />
+      )}
       keyExtractor={(item) => item.imdbID}
       numColumns={2}
       style={styles.gridContainer}
       contentContainerStyle={styles.gridContent}
       showsVerticalScrollIndicator={false}
+      removeClippedSubviews
+      initialNumToRender={6}
       ListFooterComponent={
         paginated && isFetching && !refreshing ? (
           <ActivityIndicator color={activityIndicatorColor} size={30} />
@@ -70,7 +83,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({
       }
       ListFooterComponentStyle={styles.gridFooter}
       onEndReached={({ distanceFromEnd }) => {
-        if (!paginated || distanceFromEnd < 0) return;
+        if (!paginated || distanceFromEnd < 0 || isFetching) return;
 
         hasNextPage && fetchNextPage?.();
       }}
@@ -101,7 +114,7 @@ const styles = StyleSheet.create({
     margin: Spacing.SMALL,
     marginBottom: 40,
     aspectRatio: 4 / 5,
-    maxWidth: screenWidth / 2 - 30,
+    maxWidth: screenWidth / 2 - IMAGE_CONTAINER_OFFSET,
   },
   image: {
     width: "100%",

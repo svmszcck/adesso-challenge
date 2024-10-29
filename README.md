@@ -34,6 +34,10 @@ run **"yarn test"**
 
 - UI could be improved if I had more time.
 
+- I have used some optimization techniques for the FlatList(initialNumToRender, removeClippedSubviews, React.memo for the item component). I have tried to use the getItemLayout prop as well but it caused the items to flash. Position of the items were wrong too. It should be measured correctly and integrated in the future. I have calculated to height of the items with the help of onLayout callback.
+
+- I have followed the Container-Presentational pattern for the screen components but I have used single file component pattern for the reusable components(similar to Vue components). Single file component pattern has some advantages like encapsulation of structure, enhanced reusability, readability etc.
+
 - More unit tests can be added. There are some edge cases which should be catched. Apart from that it would be really nice to add E2E tests. E2E tests are very useful to test the real user behaviour.
 
 - There is a bug regarding settings the initial route with expo router's file based routing system. That's why I have used a workaround, more details here: https://github.com/expo/router/issues/723
