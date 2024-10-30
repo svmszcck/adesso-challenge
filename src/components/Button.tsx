@@ -49,7 +49,6 @@ const CustomButton: React.FC<ButtonProps> = ({
 const styles = StyleSheet.create({
   buttonContainer: {
     elevation: 8,
-    backgroundColor: "#009688",
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
