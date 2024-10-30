@@ -24,7 +24,7 @@ run **"yarn test"**
 
 - There should be more abstraction in the codebase. As this is a small project it is acceptable to use domain specific classes & objects but in a production-level application there should be more abstraction and separation of concerns(SOLID principles).
 
-- There is env variable only for the development environment in the server application. Ideally there should be env files for other environments as well(staging, production etc.).
+- There is env variable only for the development environment. Ideally there should be env files for other environments as well(staging, production etc.).
 
 - I could test the app only on Android. I didn't have chance to test it on iOS as I don't have a Mac & iPhone at the moment.
 
