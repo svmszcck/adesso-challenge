@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     marginTop: Spacing.LARGE,
     padding: Spacing.MEDIUM,
     backgroundColor: CommonColors.GRAY_LIGHT,
-    borderRadius: 20,
+    borderRadius: 5,
   },
   submitButton: {
     marginTop: Spacing.XXLARGE,
