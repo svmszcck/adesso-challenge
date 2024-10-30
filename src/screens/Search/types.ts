@@ -9,4 +9,5 @@ export type SearchViewProps = {
   setLocalType: (value: MovieType) => void;
   localYear: string | undefined;
   setLocalYear: (value: string) => void;
+  resetFilters: () => void;
 };

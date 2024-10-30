@@ -28,7 +28,6 @@ describe("Movie Service Functions", () => {
 
       expect(result).toEqual(mockResponse.data.Search);
       expect(getData).toHaveBeenCalledWith("/", {
-        r: "json",
         s: "test",
         type: undefined,
         y: undefined,
@@ -69,7 +68,7 @@ describe("Movie Service Functions", () => {
       const result = await fetchMovie("1");
 
       expect(result).toEqual(mockResponse.data);
-      expect(getData).toHaveBeenCalledWith("/", { r: "json", i: "1" });
+      expect(getData).toHaveBeenCalledWith("/", { i: "1" });
     });
 
     it("should handle empty id", async () => {

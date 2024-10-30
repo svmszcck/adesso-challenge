@@ -5,7 +5,12 @@ const useFiter = () => {
   const [type, setType] = useState<MovieType>();
   const [year, setYear] = useState<string>();
 
-  return { type, setType, year, setYear };
+  const resetFilters = () => {
+    setType(undefined);
+    setYear(undefined);
+  };
+
+  return { type, setType, year, setYear, resetFilters };
 };
 
 export default useFiter;

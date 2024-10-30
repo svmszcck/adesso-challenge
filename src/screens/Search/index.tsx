@@ -15,6 +15,7 @@ const Search = () => {
     setType: setLocalType,
     year: localYear,
     setYear: setLocalYear,
+    resetFilters,
   } = useFiter();
 
   const handleSearch = (): void => {
@@ -41,6 +42,7 @@ const Search = () => {
         localYear,
         setLocalYear,
         handleSearch,
+        resetFilters,
       }}
     />
   );

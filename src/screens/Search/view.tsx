@@ -34,6 +34,7 @@ const SearchView: React.FC<SearchViewProps> = (props) => {
             setType={props.setLocalType}
             year={props.localYear}
             setYear={props.setLocalYear}
+            onClear={props.resetFilters}
           />
           {(props.localType || props.localYear) && (
             <View style={styles.filterPanel}>
