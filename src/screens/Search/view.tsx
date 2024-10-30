@@ -38,7 +38,10 @@ const SearchView: React.FC<SearchViewProps> = (props) => {
           />
           {(props.localType || props.localYear) && (
             <View style={styles.filterPanel}>
-              <ThemedText style={{ color: CommonColors.BLACK }}>
+              <ThemedText
+                type="defaultSemiBold"
+                style={{ color: CommonColors.BLACK }}
+              >
                 Seçilen Filtreler:
               </ThemedText>
               <ThemedText style={{ color: CommonColors.BLACK }}>
