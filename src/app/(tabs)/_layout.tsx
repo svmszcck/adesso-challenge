@@ -14,6 +14,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarLabelStyle: { marginBottom: 5 },
+        tabBarLabelPosition: "below-icon",
       }}
     >
       <Tabs.Screen
