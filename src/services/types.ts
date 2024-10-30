@@ -48,3 +48,5 @@ export type SearchAPIResult = {
 export type MovieAPIResult = Movie & { Response: string };
 
 export type ApiResponse = SearchAPIResult | MovieAPIResult;
+
+export type DataFormat = "json" | "xml";

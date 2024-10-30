@@ -3,7 +3,7 @@ export { default as Button } from "./Button";
 export { default as ErrorUI } from "./ErrorUI";
 export { default as Filter } from "./Filter";
 export { default as FloatingButton } from "./FloatingButton";
-export { default as Header } from "./Header";
+export { default as Header } from "./navigation/Header";
 export { default as Image } from "./Image";
 export { default as ImageGrid } from "./ImageGrid";
 export { default as Modal } from "./Modal";

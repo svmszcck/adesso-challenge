@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
 import Spacing from "@/constants/spacing";
-import Header from "./Header";
+import Header from "./navigation/Header";
 
 export type ScreenContainerProps = ViewProps & {
   lightColor?: string;

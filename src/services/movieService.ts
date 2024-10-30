@@ -16,7 +16,6 @@ export const fetchMovies = async (
     }
 
     const response = await getData<SearchAPIResult>("/", {
-      r: "json",
       s: searchValue,
       type,
       y: year,
@@ -44,7 +43,6 @@ export const fetchMovie = async (
     }
 
     const response = await getData<MovieAPIResult>("/", {
-      r: "json",
       i: id,
     });
 
