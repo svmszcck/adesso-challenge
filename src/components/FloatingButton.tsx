@@ -20,7 +20,7 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({
       style={[styles.buttonContainer, { backgroundColor: color }]}
       onPress={onPress}
       activeOpacity={0.8}
-      testID="floating-bıtton"
+      testID="floating-button"
     >
       <Ionicons name={icon} size={32} color={iconColor} />
     </TouchableOpacity>

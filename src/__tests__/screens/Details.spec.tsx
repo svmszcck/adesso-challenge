@@ -100,7 +100,7 @@ describe("Details Screen", () => {
 
     await screen.findByText(mockData.Title);
 
-    fireEvent.press(screen.getByTestId("floating-bıtton"));
+    fireEvent.press(screen.getByTestId("floating-button"));
 
     await waitFor(() => {
       expect(addItem).toHaveBeenCalledWith("movies", {
@@ -110,7 +110,7 @@ describe("Details Screen", () => {
       });
     });
 
-    fireEvent.press(screen.getByTestId("floating-bıtton"));
+    fireEvent.press(screen.getByTestId("floating-button"));
 
     await waitFor(() => {
       expect(removeItem).toHaveBeenCalled();
